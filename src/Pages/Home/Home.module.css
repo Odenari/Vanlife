@@ -1,12 +1,12 @@
 .home {
   height: 24.25rem;
-  padding-inline: 1.5rem;
+  padding-inline: var(--base-inline-p);
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
-  color: var(--txt-home-clr);
-  background-image: url('/src/Assets/Images/image54.png');
+  color: var(--txt-alter-clr);
+  background-image: url('/src/Assets/Images/home-hero.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -36,18 +36,4 @@
 
   /* Hack to rearrange words slightly*/
   letter-spacing: 0.1px;
-}
-
-.homeBtn {
-  width: 494.33px;
-  height: 49.83px;
-  text-align: center;
-  font-weight: var(--fw-700);
-  color: var(--txt-home-clr);
-  border-radius: var(--small-border);
-  background: var(--btn-main);
-  transition: background var(--short-trs) ease-in-out;
-}
-.homeBtn:hover {
-  background: var(--hovered-primary);
 }

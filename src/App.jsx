@@ -6,6 +6,7 @@ import './Variables.css';
 // --- Components ahead --- //
 import { NavBar } from './Components/NavBar/NavBar';
 import { Home } from './Pages/Home/Home';
+import { About } from './Pages/About/About';
 import { Footer } from './Components/Footer/Footer';
 
 // --- Libs and Utilities --- //
@@ -15,10 +16,13 @@ function App() {
   return (
     <div className='main-container'>
       <BrowserRouter>
-        <NavBar />
+        <header>
+          <NavBar />
+        </header>
         <main>
           <Routes>
             <Route path='/' element={<Home />}></Route>
+            <Route path='/about' element={<About />}></Route>
           </Routes>
         </main>
         <Footer />

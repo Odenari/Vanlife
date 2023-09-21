@@ -1,5 +1,5 @@
 import s from './Home.module.css';
-import Button from '../../Components/UI/Button/CustomButton';
+import { CustomButton } from '../../Components/UI/Button/CustomButton';
 
 export const Home = () => {
   return (
@@ -13,7 +13,9 @@ export const Home = () => {
           perfect van to make your perfect road trip.
         </p>
       </div>
-      <button className={s.homeBtn}>Find your van</button>
+      <CustomButton buttonType='primaryLong' to='/vans'>
+        Find your way
+      </CustomButton>
     </section>
   );
 };

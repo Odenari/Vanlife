@@ -1,0 +1,42 @@
+.aboutHero {
+  display: block;
+  width: 100%;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-rows: 1fr;
+  gap: 2.5rem;
+  padding-block: var(--base-vertical-p);
+  padding-inline: var(--base-inline-p);
+
+  /* align-items: center; */
+}
+
+.title {
+  font-weight: 700;
+  font-size: var(--fs-h2);
+  line-height: 38px;
+  color: var(--hovered-secondary);
+}
+
+.descrWrapper {
+  min-height: 9.625rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-weight: var(--fw-500);
+}
+
+.callToAction {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 12.375rem;
+  padding-inline: 2em;
+  background: var(--tertiary-bg-clr);
+}
+
+.callToAction h3 {
+  font-size: var(--fs-h3);
+}

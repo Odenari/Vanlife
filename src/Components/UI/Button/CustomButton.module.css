@@ -1,0 +1,27 @@
+.baseStyling {
+  display: block;
+  width: 6.5rem;
+  height: 3.125rem;
+  text-align: center;
+  line-height: 2.875rem;
+  color: var(--txt-alter-clr);
+  font-weight: var(--fw-700);
+  border-radius: var(--small-border);
+  transition: background var(--short-trs) ease-in-out;
+}
+
+.primaryLong {
+  width: 30.925rem;
+  background: var(--btn-main);
+}
+
+.primaryLong:hover {
+  background: var(--hovered-primary);
+}
+
+.secondaryBlack {
+  width: 10.875rem;
+  height: 3.125rem;
+  /* color: var(--); */
+  background: var(--hovered-secondary);
+}
