@@ -1,0 +1,21 @@
+.navContainer {
+  padding: 2.25em 1.565em;
+}
+
+.logoImg {
+  display: block;
+  width: 8rem;
+}
+
+.listOfLinks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.coupledLinks {
+  gap: 1em;
+  width: 7rem;
+  display: flex;
+  justify-content: space-between;
+}

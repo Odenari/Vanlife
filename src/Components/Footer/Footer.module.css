@@ -1,0 +1,12 @@
+.footer {
+  display: grid;
+  place-content: center;
+  height: 4.625rem;
+  background-color: var(--secondary-bg-clr);
+  color: var(--txt-alter-clr);
+}
+
+.footerTxt {
+  font-size: 0.875rem;
+  font-weight: var(--fw-500);
+}

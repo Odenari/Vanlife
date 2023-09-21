@@ -1,0 +1,26 @@
+:root {
+  /* Colors */
+  --main-bg-clr: #fff7ed;
+  --secondary-bg-clr: #252525;
+  --primary-clr: #ffead0;
+  --btn-main: #ff8c38;
+  --hovered-primary: #e17654;
+  --hovered-secondary: #161616;
+  --hovered-luxury: #115e59;
+
+  /* Font related */
+  --fw-300: 300;
+  --fw-500: 500;
+  --fw-600: 600;
+  --fw-700: 700;
+  --fw-800: 800;
+  --fw-900: 900;
+  --txt-home-clr: #fff;
+  --txt-main-clr: #4d4d4d;
+  --txt-alter-clr: #aaaaaa;
+
+  /* Borders */
+  --small-border: 0.25rem;
+  /* Transitions */
+  --short-trs: 200ms;
+}

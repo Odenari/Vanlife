@@ -1,0 +1,53 @@
+.home {
+  height: 24.25rem;
+  padding-inline: 1.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  color: var(--txt-home-clr);
+  background-image: url('/src/Assets/Images/image54.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* Hack for transparency part1 */
+  position: relative;
+  isolation: isolate;
+}
+
+/* Hack for transparency part2 */
+.home::after {
+  content: '';
+  inset: 0;
+  z-index: -1;
+  opacity: 0.46;
+  background: black;
+  position: absolute;
+}
+.title {
+  font-size: 2.25rem;
+  font-weight: var(--fw-800);
+}
+.descr {
+  line-height: 1.8rem;
+  margin-top: 1.85rem;
+  font-weight: var(--fw-500);
+
+  /* Hack to rearrange words slightly*/
+  letter-spacing: 0.1px;
+}
+
+.homeBtn {
+  width: 494.33px;
+  height: 49.83px;
+  text-align: center;
+  font-weight: var(--fw-700);
+  color: var(--txt-home-clr);
+  border-radius: var(--small-border);
+  background: var(--btn-main);
+  transition: background var(--short-trs) ease-in-out;
+}
+.homeBtn:hover {
+  background: var(--hovered-primary);
+}
