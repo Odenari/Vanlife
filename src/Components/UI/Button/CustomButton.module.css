@@ -22,6 +22,8 @@
 .secondaryBlack {
   width: 10.875rem;
   height: 3.125rem;
-  /* color: var(--); */
   background: var(--hovered-secondary);
+}
+.secondaryBlack:hover {
+  background: var(--);
 }

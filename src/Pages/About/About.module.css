@@ -9,8 +9,6 @@
   gap: 2.5rem;
   padding-block: var(--base-vertical-p);
   padding-inline: var(--base-inline-p);
-
-  /* align-items: center; */
 }
 
 .title {

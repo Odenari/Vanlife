@@ -13,7 +13,7 @@ export const Home = () => {
           perfect van to make your perfect road trip.
         </p>
       </div>
-      <CustomButton buttonType='primaryLong' to='/vans'>
+      <CustomButton buttonType='home' to='/vans'>
         Find your way
       </CustomButton>
     </section>

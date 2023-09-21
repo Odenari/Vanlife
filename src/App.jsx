@@ -12,6 +12,9 @@ import { Footer } from './Components/Footer/Footer';
 // --- Libs and Utilities --- //
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+// --- MOCK SERVER --- //
+import '../server.js';
+
 function App() {
   return (
     <div className='main-container'>

@@ -1,4 +1,5 @@
 import s from './About.module.css';
+import about from '../../Assets/Images/about-hero.png';
 import { CustomButton } from '../../Components/UI/Button/CustomButton';
 
 export const About = () => {
@@ -6,7 +7,7 @@ export const About = () => {
     <div>
       <img
         className={s.aboutHero}
-        src='/src/Assets/Images/about-hero.png'
+        src={about}
         alt='Picture of a man sitting on a van at night.'
       />
       <div className={s.wrapper}>
@@ -26,7 +27,8 @@ export const About = () => {
         </div>
         <div className={s.callToAction}>
           <h3>Your destination is waiting. Your van is ready.</h3>
-          <CustomButton buttonType='secondaryBlack' to='/vans'>
+
+          <CustomButton buttonType='about' to='/vans'>
             Explore our vans
           </CustomButton>
         </div>
