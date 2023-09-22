@@ -1,13 +1,13 @@
 :root {
   /* Colors */
   --main-bg-clr: #fff7ed;
+  --primary-bg-clr: #ffead0;
   --secondary-bg-clr: #252525;
   --tertiary-bg-clr: #ffcc8d;
-  --primary-clr: #ffead0;
   --btn-main: #ff8c38;
-  --hovered-primary: #e17654;
-  --hovered-secondary: #161616;
-  --hovered-luxury: #115e59;
+  --simple: #e17654;
+  --rugged: #161616;
+  --luxury: #115e59;
 
   /* Font related */
   --fs-h2: 2rem;
@@ -29,7 +29,9 @@
   /* Transitions */
   --short-trs: 200ms;
 
-  /* Margins & Paddings */
+  /* Margins & Paddings  & Gaps*/
+  --base-gap: 1.75rem;
+  --base-m: 2.5rem;
   --base-inline-p: 1.5rem;
   --base-vertical-p: 3.123rem;
 }

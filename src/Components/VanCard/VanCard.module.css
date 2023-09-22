@@ -1,0 +1,20 @@
+.vanWrapper > {
+  cursor: pointer;
+}
+
+.vanWrapper img {
+  border-radius: var(--small-border);
+}
+.vanInfo {
+  display: flex;
+  justify-content: space-between;
+  color: var(--rugged);
+}
+
+.price {
+  font-weight: var(--fw-600);
+}
+.price > span:last-child {
+  display: block;
+  font-weight: normal;
+}

@@ -1,0 +1,30 @@
+.container {
+  margin-top: var(--base-m);
+  margin-bottom: calc(var(--base-m) * 1.5);
+  padding-inline: var(--base-inline-p);
+}
+
+.vans {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.filtersWrapper {
+  width: 100%;
+  display: flex;
+  margin-top: var(--base-m);
+  gap: var(--base-gap);
+  align-items: center;
+}
+.filtersWrapper > a {
+  background: var(--primary-bg-clr);
+  color: var(--txt-main-color);
+}
+.filtersWrapper > a:last-child {
+  background: transparent;
+}
+.catalogBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.875rem;
+  margin-top: var(--base-m);
+}

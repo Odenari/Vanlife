@@ -17,6 +17,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
     // for the sake of good
+    'no-empty': 'warn',
     'no-unused-vars': 'off',
     'react/prop-types': 'off',
   },

@@ -1,13 +1,19 @@
 .baseStyling {
-  display: block;
+  display: grid;
+  place-content: center;
   width: 6.5rem;
+  font-size: 1rem;
   height: 3.125rem;
   text-align: center;
-  line-height: 2.875rem;
   color: var(--txt-alter-clr);
   font-weight: var(--fw-700);
   border-radius: var(--small-border);
   transition: background var(--short-trs) ease-in-out;
+}
+
+.filterBtn {
+  color: var(--txt-main-clr);
+  background: var(--primary-bg-clr);
 }
 
 .primaryLong {
@@ -16,14 +22,45 @@
 }
 
 .primaryLong:hover {
-  background: var(--hovered-primary);
+  background: var(--simple);
 }
 
 .secondaryBlack {
-  width: 10.875rem;
   height: 3.125rem;
-  background: var(--hovered-secondary);
+  width: 10.875rem;
+  background: var(--rugged);
 }
 .secondaryBlack:hover {
   background: var(--);
+}
+
+.simpleBg,
+.ruggedBg,
+.luxuryBg {
+  height: 2.375rem;
+}
+.simpleBg:hover,
+.ruggedBg:hover,
+.luxuryBg:hover {
+  color: var(--txt-alter-clr);
+}
+.simpleBg {
+  background: var(--simple);
+}
+
+.ruggedBg {
+  background: var(--rugged);
+}
+
+.luxuryBg {
+  background: var(--luxury);
+}
+.simpleBg:hover {
+  background: var(--simple);
+}
+.ruggedBg:hover {
+  background: var(--rugged);
+}
+.luxuryBg:hover {
+  background: var(--luxury);
 }

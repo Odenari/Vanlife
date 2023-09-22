@@ -15,7 +15,7 @@
   font-weight: 700;
   font-size: var(--fs-h2);
   line-height: 38px;
-  color: var(--hovered-secondary);
+  color: var(--rugged);
 }
 
 .descrWrapper {

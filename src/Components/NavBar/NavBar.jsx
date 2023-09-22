@@ -21,7 +21,7 @@ export const NavBar = () => {
         </li>
         <li className={s.coupledLinks}>
           <CustomLink to='/about'>About</CustomLink>
-          <CustomLink to='vans'>Vans</CustomLink>
+          <CustomLink to='/vans'>Vans</CustomLink>
         </li>
       </ul>
     </nav>

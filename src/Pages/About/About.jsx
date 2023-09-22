@@ -4,7 +4,7 @@ import { CustomButton } from '../../Components/UI/Button/CustomButton';
 
 export const About = () => {
   return (
-    <div>
+    <section>
       <img
         className={s.aboutHero}
         src={about}
@@ -28,11 +28,11 @@ export const About = () => {
         <div className={s.callToAction}>
           <h3>Your destination is waiting. Your van is ready.</h3>
 
-          <CustomButton buttonType='about' to='/vans'>
+          <CustomButton type='about' to='/vans'>
             Explore our vans
           </CustomButton>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
