@@ -1,10 +1,21 @@
-import { link } from './CustomLink.module.css';
-import { Link } from 'react-router-dom';
+import { link, activeLink } from './CustomLink.module.css';
+import { NavLink } from 'react-router-dom';
 
-export const CustomLink = props => {
+const activeClass = active => {
+  if (active) return 'active';
+};
+
+export const CustomLink = ({ renderIcon, END, ...props }) => {
+  const classes = ['left'];
+
   return (
-    <Link className={link} to={props.to}>
+    <NavLink
+      end={END}
+      to={props.to}
+      className={route => (route.isActive && activeLink) || link}
+    >
+      {renderIcon && renderIcon({ classes })}
       {props.children}
-    </Link>
+    </NavLink>
   );
 };

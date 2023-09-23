@@ -38,6 +38,7 @@
 .ruggedBg,
 .luxuryBg {
   height: 2.375rem;
+  color: var(--txt-alter-clr);
 }
 .simpleBg:hover,
 .ruggedBg:hover,

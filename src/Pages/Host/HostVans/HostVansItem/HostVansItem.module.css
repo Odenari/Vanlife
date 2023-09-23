@@ -1,0 +1,14 @@
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: var(--base-gap);
+  background: var(--txt-alter-clr);
+  padding: 1em 1.5em;
+  margin-block: var(--base-m);
+  border-radius: var(--small-border);
+}
+.listItem > img {
+  width: 4.125rem;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--small-border);
+}

@@ -1,0 +1,31 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: var(--base-gap);
+  margin-top: var(--base-gap);
+  background: #fff;
+  padding-block: var(--small-vertical-p);
+  padding-inline: var(--base-inline-p);
+}
+.detailsHeader {
+  display: flex;
+  gap: var(--base-gap);
+  align-items: center;
+}
+.detailsHeader > img {
+  width: 10rem;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--small-border);
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--small-gap);
+}
+.tabs {
+  font-size: 1rem;
+  display: flex;
+  gap: var(--base-gap);
+}

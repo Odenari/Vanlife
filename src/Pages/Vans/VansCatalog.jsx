@@ -3,14 +3,9 @@ import { capitalize } from '../../Utils/utilities';
 import { CustomLink } from '../../Components/UI/Link/CustomLink';
 import { CustomButton } from '../../Components/UI/Button/CustomButton';
 import { VanCard } from '../../Components/VanCard/VanCard';
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 
-const FILTER_TYPES = [
-  { id: 0, vanSegment: 'simple' },
-  { id: 1, vanSegment: 'luxury' },
-  { id: 2, vanSegment: 'rugged' },
-];
-const TYPES = {};
+const VanSegmentsTypes = {};
 const createUniqTypes = data => [...new Set(data.map(o => o.type))];
 
 export const VansCatalog = () => {
@@ -21,23 +16,26 @@ export const VansCatalog = () => {
       .then(res => res.json())
       .then(data => {
         setVans(data.vans);
-        TYPES.initialTypes = createUniqTypes(data.vans);
+        VanSegmentsTypes.initial = createUniqTypes(data.vans);
       });
   }, []);
 
   return (
-    <section className={s.container}>
+    <section className='container'>
       <div className={s.catalogHeader}>
         <h2>Explore our van options</h2>
         <div className={s.filtersWrapper}>
-          {TYPES.initialTypes &&
-            TYPES.initialTypes.map((filter, index) => {
+          {VanSegmentsTypes.initial ? (
+            VanSegmentsTypes.initial.map((filter, index) => {
               return (
                 <CustomButton key={index} type={filter}>
                   {capitalize(filter)}
                 </CustomButton>
               );
-            })}
+            })
+          ) : (
+            <h3>Loading..</h3>
+          )}
 
           <CustomLink>Clear filters</CustomLink>
         </div>

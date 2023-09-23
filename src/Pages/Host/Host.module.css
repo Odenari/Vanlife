@@ -1,0 +1,8 @@
+.hostNav {
+  display: flex;
+  gap: 1rem;
+  width: fit-content;
+  justify-content: space-between;
+  margin-block: var(--base-m);
+  padding-inline: var(--base-inline-p);
+}

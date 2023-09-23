@@ -31,7 +31,10 @@
 
   /* Margins & Paddings  & Gaps*/
   --base-gap: 1.75rem;
+  --small-gap: 0.875rem;
   --base-m: 2.5rem;
   --base-inline-p: 1.5rem;
+  --small-inline-p: 1rem;
   --base-vertical-p: 3.123rem;
+  --small-vertical-p: 1.5rem;
 }

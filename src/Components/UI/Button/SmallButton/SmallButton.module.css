@@ -1,0 +1,25 @@
+.baseStyling {
+  cursor: default;
+  width: 4.2rem;
+  height: 1.75rem;
+  font-size: 0.875rem;
+  /* background: var(--simple); */
+  border-radius: calc(var(--small-border) - 0.15rem);
+  display: grid;
+  place-content: center;
+  text-align: center;
+  color: var(--txt-alter-clr);
+  transition: background var(--short-trs) ease-in-out;
+}
+
+.simpleBg {
+  background: var(--simple);
+}
+
+.ruggedBg {
+  background: var(--rugged);
+}
+
+.luxuryBg {
+  background: var(--luxury);
+}

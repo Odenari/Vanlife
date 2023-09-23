@@ -11,15 +11,17 @@ export const VanCard = ({ van }) => {
     <div className={s.vanWrapper}>
       <Link to={`/vans/${van.id}`}>
         <img src={imageUrl} alt={`Van model  ${name}`} />
-        <div className={s.vanInfo}>
-          <h3>{name}</h3>
-          <p className={s.price}>
-            <span>${price}</span>
-            <span>/day</span>
-          </p>
-        </div>
       </Link>
-      <CustomButton type={vanSegment}>{btnName}</CustomButton>
+      <div className={s.vanInfo}>
+        <h3>{name}</h3>
+        <p className={s.price}>
+          <span>${price}</span>
+          <span>/day</span>
+        </p>
+      </div>
+      <CustomButton to={`/vans/${van.id}`} type={vanSegment}>
+        {btnName}
+      </CustomButton>
     </div>
   );
 };

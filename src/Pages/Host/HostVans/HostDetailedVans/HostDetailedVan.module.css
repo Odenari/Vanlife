@@ -1,0 +1,13 @@
+.fieldName {
+  font-size: clamp(1.75rem 5wv 1rem);
+  font-weight: var(--fw-700);
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.textContent p {
+  line-height: 1.5rem;
+}

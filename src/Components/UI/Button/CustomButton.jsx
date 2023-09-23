@@ -13,7 +13,7 @@ const styles = {
   luxury: s.luxuryBg,
 };
 
-export const CustomButton = ({ type, to, children, ...props }) => {
+export const CustomButton = ({ type, to, children }) => {
   return (
     <Link className={`${styles[type]} ${styles.default}`} to={to}>
       {children}

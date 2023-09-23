@@ -1,0 +1,8 @@
+.left {
+  position: relative;
+  top: 0.281rem;
+  width: 24px;
+  height: 20px;
+  filter: invert(58%) sepia(0%) saturate(1%) hue-rotate(182deg) brightness(91%)
+    contrast(88%);
+}

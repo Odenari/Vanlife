@@ -1,9 +1,3 @@
-.container {
-  margin-top: var(--base-m);
-  margin-bottom: calc(var(--base-m) * 1.5);
-  padding-inline: var(--base-inline-p);
-}
-
 .vans {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -16,11 +10,17 @@
   align-items: center;
 }
 .filtersWrapper > a {
-  background: var(--primary-bg-clr);
   color: var(--txt-main-color);
+  background: var(--primary-bg-clr);
 }
 .filtersWrapper > a:last-child {
+  text-decoration: none;
   background: transparent;
+}
+.filtersWrapper > a:last-child:hover {
+  transform: scale(1.025);
+  text-underline-offset: 0.2em;
+  text-decoration: underline 0.15em;
 }
 .catalogBody {
   display: grid;

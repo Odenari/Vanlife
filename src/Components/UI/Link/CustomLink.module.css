@@ -1,4 +1,5 @@
 .link {
+  width: fit-content;
   color: var(--txt-main-clr);
   text-underline-offset: 0.2em;
   text-decoration: underline 0.15em;
@@ -7,7 +8,17 @@
 }
 
 .link:hover {
+  color: var(--rugged);
   transform: scale(1.025);
-  color: var(--accent-clr-first);
-  text-decoration-color: var(--accent-clr-first);
+  text-decoration-color: var(--rugged);
+}
+.activeLink {
+  color: var(--rugged);
+  text-underline-offset: 0.2em;
+  text-decoration: underline 0.15em;
+  text-decoration-color: var(--rugged);
+  transition: all 200ms ease-in-out;
+}
+.activeLink:hover {
+  transform: scale(1.025);
 }
