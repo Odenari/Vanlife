@@ -14,14 +14,14 @@ import { Reviews } from './Pages/Host/Reviews/Reviews';
 import { HostVans } from './Pages/Host/HostVans/HostVans/HostVans';
 import { HostVansInfo } from './Pages/Host/HostVansInfo/HostVansInfo';
 import { HostDetailedVans } from './Pages/Host/HostVans/HostDetailedVans/HostDetailedVan';
+import { VanDetails } from './Pages/VanDetails/VanDetails';
+import { Layout } from './Pages/Layout/Layout';
 
 // --- Libs and Utilities --- //
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // --- MOCK SERVER --- //
 import '../server.js';
-import { VanDetails } from './Pages/VanDetails/VanDEtails';
-import { Layout } from './Pages/Layout/Layout';
 
 function App() {
   return (
