@@ -1,22 +1,24 @@
-// --- Styles goes first --- //
+// --- Styles  --- //
 import './App.css';
 import './Root.css';
 import './Variables.css';
 
-// --- Components ahead --- //
+// --- Components  --- //
 import { Home } from './Pages/Home/Home';
 import { About } from './Pages/About/About';
 import { VansCatalog } from './Pages/Vans/VansCatalog';
+import { Layout } from './Pages/Layout/Layout';
+
 import { Host } from './Pages/Host/Host';
-import { Dashboard } from './Pages/Host/Dashboard/Dashboard';
 import { Income } from './Pages/Host/Income/Income';
 import { Reviews } from './Pages/Host/Reviews/Reviews';
+import { VanPrice } from './Pages/Host/VanPrice/VanPrice';
+import { VanDetails } from './Pages/VanDetails/VanDetails';
+import { VanPhotos } from './Pages/Host/VanPhotos/VanPhotos';
+import { Dashboard } from './Pages/Host/Dashboard/Dashboard';
 import { HostVans } from './Pages/Host/HostVans/HostVans/HostVans';
 import { HostVansInfo } from './Pages/Host/HostVansInfo/HostVansInfo';
 import { HostDetailedVans } from './Pages/Host/HostVans/HostDetailedVans/HostDetailedVan';
-import { VanDetails } from './Pages/VanDetails/VanDetails';
-import { Layout } from './Pages/Layout/Layout';
-
 // --- Libs and Utilities --- //
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -39,8 +41,8 @@ function App() {
             <Route path='vans' element={<HostVans />} />
             <Route path='vans/:id/' element={<HostVansInfo />}>
               <Route index element={<HostDetailedVans />} />
-              {/* <Route />
-              <Route /> */}
+              <Route path='pricing' element={<VanPrice />} />
+              <Route path='Photos' element={<VanPhotos />} />
             </Route>
             <Route path='reviews' element={<Reviews />} />
           </Route>

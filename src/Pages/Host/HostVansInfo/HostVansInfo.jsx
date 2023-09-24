@@ -22,14 +22,16 @@ export const HostVansInfo = () => {
       .then(data => setVan(data.vans));
   }, [params.id]);
 
-  return <>{van && render(van, params)}</>;
+  return <>{van ? render(van, params) : <h2>Loading...</h2>}</>;
 };
 
 function render(van, params) {
   return (
     <section className={wrapper}>
       <CustomLink
-        to='/host/vans/'
+        END
+        to='..'
+        relative='path'
         renderIcon={({ classes }) => <Icon iconClass={classes} />}
       >
         Back to all vans
@@ -55,7 +57,7 @@ function render(van, params) {
         <CustomLink to='photos'>Photos</CustomLink>
       </div>
       <section>
-        <Outlet />
+        <Outlet context={{ currentVan: van }} />
       </section>
     </section>
   );

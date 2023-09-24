@@ -1,11 +1,11 @@
-import s from './HostVans.module.css';
 import { useState, useEffect } from 'react';
 import { HostVansItem } from '../HostVansItem/HostVansItem';
+
 export const HostVans = () => {
   const [hostVans, setHostVans] = useState(null);
 
   useEffect(() => {
-    fetch('/api/vans')
+    fetch('/api/host/vans/')
       .then(resp => resp.json())
       .then(data => {
         setHostVans(data.vans);

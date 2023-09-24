@@ -1,40 +1,28 @@
-import { fieldName, textContent } from './HostDetailedVan.module.css';
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { textContent } from './HostDetailedVan.module.css';
+import { useOutletContext } from 'react-router-dom';
 
 export const HostDetailedVans = () => {
-  const [van, setVan] = useState(null);
-  const param = useParams();
-
-  useEffect(() => {
-    fetch(`/api/vans/${param.id}`)
-      .then(resp => resp.json())
-      .then(data => setVan(data.vans));
-  }, [param.id]);
-
-  return <>{van && renderDetails(van)}</>;
-};
-
-function renderDetails(van) {
+  const { currentVan } = useOutletContext();
+  console.log(currentVan);
   return (
     <section>
       <ul className={textContent}>
         <li>
-          <span className={fieldName}>Name: </span>
-          <span>{van.name}</span>
+          <span>Name: </span>
+          {currentVan.name}
         </li>
         <li>
-          <span className={fieldName}>Category: </span>
-          <span>{van.type}</span>
+          <span>Category: </span>
+          {currentVan.type}
         </li>
         <li>
-          <span className={fieldName}>Description: </span>
-          {van.description}
+          <span>Description: </span>
+          {currentVan.description}
         </li>
         <li>
-          <span className={fieldName}>Visibility:</span> Public
+          <span>Visibility:</span> Public
         </li>
       </ul>
     </section>
   );
-}
+};

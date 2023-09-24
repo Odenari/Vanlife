@@ -5,13 +5,21 @@ const activeClass = active => {
   if (active) return 'active';
 };
 
-export const CustomLink = ({ renderIcon, END, ...props }) => {
+export const CustomLink = ({
+  handler,
+  renderIcon,
+  END,
+  to,
+  relative,
+  ...props
+}) => {
   const classes = ['left'];
-
   return (
     <NavLink
       end={END}
-      to={props.to}
+      onClick={handler}
+      to={to ? to : null}
+      relative={relative}
       className={route => (route.isActive && activeLink) || link}
     >
       {renderIcon && renderIcon({ classes })}

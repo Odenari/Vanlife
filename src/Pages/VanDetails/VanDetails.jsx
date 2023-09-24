@@ -3,25 +3,19 @@ import s from './VanDetails.module.css';
 import { Icon } from '../../Components/UI/Icons/Icon';
 import { CustomLink } from '../../Components/UI/Link/CustomLink';
 import { CustomButton as Button } from '../../Components/UI/Button/CustomButton';
-
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
 import { capitalize } from '../../Utils/utilities';
 
 export const VanDetails = () => {
-  const params = useParams();
-  const [van, setVan] = useState(null);
-  useEffect(() => {
-    fetch(`/api/vans/${params.id}`)
-      .then(resp => resp.json())
-      .then(data => setVan(data.vans));
-  }, [params.id]);
+  const van = useOutletContext();
+
   return (
     <>
       {van ? (
         <div className={s.wrapper}>
           <CustomLink
-            to='/vans/'
+            to='..' // ".." point to parent path like in cd ../ command this made our path a relative to parent no matter name he have
+            relative='path'
             renderIcon={({ classes }) => <Icon iconClass={classes} />}
           >
             Back to all vans
