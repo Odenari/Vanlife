@@ -1,9 +1,10 @@
 import s from './VansCatalog.module.css';
-import { superbClear, capitalize } from '../../Utils/utilities';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { VanCard } from '../../Components/VanCard/VanCard';
+import { superbClear, capitalize, filterByType } from '../../Utils/utilities';
 import { CustomLink } from '../../Components/UI/Link/CustomLink';
 import { CustomButton } from '../../Components/UI/Button/CustomButton';
-import { VanCard } from '../../Components/VanCard/VanCard';
-import { useState, useEffect } from 'react';
 
 const feeCategories = [];
 
@@ -11,8 +12,6 @@ const getUniqTypes = data => [...new Set(data.map(o => o.type))];
 
 export const VansCatalog = () => {
   const [vans, setVans] = useState([]);
-  const [isActive, setIsActive] = useState('');
-  const [filteredVans, setFilteredVans] = useState([]);
 
   useEffect(() => {
     fetch('/api/vans')
@@ -25,14 +24,9 @@ export const VansCatalog = () => {
       });
   }, []);
 
-  const handleSort = (vanList, filter) => {
-    setIsActive(filter);
-    setFilteredVans(
-      vanList.filter(i => {
-        if (i.type === filter) return i;
-      })
-    );
-  };
+  const [searchParams] = useSearchParams();
+  const searchType = searchParams.get('type');
+  const filteredVans = filterByType(vans, searchType);
 
   return (
     <section className='container'>
@@ -45,10 +39,8 @@ export const VansCatalog = () => {
                 <CustomButton
                   key={index}
                   type={filter}
-                  isActive={isActive}
-                  toggleFilter={() => {
-                    handleSort(vans, filter);
-                  }}
+                  isActive={searchType}
+                  searchParams={searchParams}
                 >
                   {capitalize(filter)}
                 </CustomButton>
@@ -58,14 +50,12 @@ export const VansCatalog = () => {
             <h3>Loading..</h3>
           )}
 
-          <CustomLink handler={() => superbClear(setFilteredVans, setIsActive)}>
-            Clear filters
-          </CustomLink>
+          {searchType && <CustomLink to='.'>Clear filters</CustomLink>}
         </div>
         <div className={s.catalogBody}>
           {vans && !filteredVans.length
             ? vans.map(v => <VanCard key={v.id} van={v} />)
-            : filteredVans
+            : filteredVans.length
             ? filteredVans.map(v => <VanCard key={v.id} van={v} />)
             : 'Going to the rabbit hole'}
         </div>

@@ -13,11 +13,13 @@
   color: var(--txt-main-color);
   background: var(--primary-bg-clr);
 }
-.filtersWrapper > a:last-child {
+
+a[aria-current='page'] {
   text-decoration: none;
   background: transparent;
 }
-.filtersWrapper > a:last-child:hover {
+
+a[aria-current='page']:hover {
   transform: scale(1.025);
   text-underline-offset: 0.2em;
   text-decoration: underline 0.15em;

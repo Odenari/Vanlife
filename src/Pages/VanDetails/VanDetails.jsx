@@ -3,12 +3,18 @@ import s from './VanDetails.module.css';
 import { Icon } from '../../Components/UI/Icons/Icon';
 import { CustomLink } from '../../Components/UI/Link/CustomLink';
 import { CustomButton as Button } from '../../Components/UI/Button/CustomButton';
-import { useOutletContext } from 'react-router-dom';
 import { capitalize } from '../../Utils/utilities';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 export const VanDetails = () => {
-  const van = useOutletContext();
-
+  const params = useParams();
+  const [van, setVan] = useState();
+  useEffect(() => {
+    fetch(`/api/vans/${params.id}`)
+      .then(resp => resp.json())
+      .then(data => setVan(data.vans));
+  }, [params.id]);
   return (
     <>
       {van ? (
@@ -35,7 +41,7 @@ export const VanDetails = () => {
           </Button>
         </div>
       ) : (
-        <h2>Loading..</h2>
+        <h2>Loading...</h2>
       )}
     </>
   );

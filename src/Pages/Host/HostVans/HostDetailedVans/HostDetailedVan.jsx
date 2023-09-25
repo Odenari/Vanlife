@@ -3,7 +3,6 @@ import { useOutletContext } from 'react-router-dom';
 
 export const HostDetailedVans = () => {
   const { currentVan } = useOutletContext();
-  console.log(currentVan);
   return (
     <section>
       <ul className={textContent}>
