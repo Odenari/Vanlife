@@ -1,11 +1,12 @@
 .home {
-  height: 24.25rem;
-  padding-inline: var(--base-inline-p);
   display: flex;
+  height: calc(100vh - (var(--header-footer-height) * 2));
   align-items: center;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  gap: var(--base-gap);
   color: var(--txt-alter-clr);
+  padding-inline: var(--base-inline-p);
   background-image: url('/src/Assets/Images/home-hero.png');
   background-position: center;
   background-repeat: no-repeat;
@@ -15,7 +16,6 @@
   position: relative;
   isolation: isolate;
 }
-
 /* Hack for transparency part2 */
 .home::after {
   content: '';
@@ -25,6 +25,7 @@
   background: black;
   position: absolute;
 }
+
 .title {
   font-size: 2.25rem;
   font-weight: var(--fw-800);

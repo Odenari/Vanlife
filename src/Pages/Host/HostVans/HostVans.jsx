@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { HostVansItem } from '../HostVansItem/HostVansItem';
+import { HostVansItem } from './HostVansItem/HostVansItem';
 
 export const HostVans = () => {
   const [hostVans, setHostVans] = useState(null);
@@ -7,9 +7,7 @@ export const HostVans = () => {
   useEffect(() => {
     fetch('/api/host/vans/')
       .then(resp => resp.json())
-      .then(data => {
-        setHostVans(data.vans);
-      });
+      .then(data => setHostVans(data.vans));
   }, []);
 
   return (

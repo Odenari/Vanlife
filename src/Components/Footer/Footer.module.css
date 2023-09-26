@@ -1,7 +1,9 @@
 .footer {
   display: grid;
   place-content: center;
-  height: 4.625rem;
+  height: var(--header-footer-height);
+  position: sticky;
+  top: 100%;
   background-color: var(--secondary-bg-clr);
   color: var(--txt-alter-clr);
 }

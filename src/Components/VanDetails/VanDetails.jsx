@@ -3,31 +3,44 @@ import s from './VanDetails.module.css';
 import { Icon } from '../../Components/UI/Icons/Icon';
 import { CustomLink } from '../../Components/UI/Link/CustomLink';
 import { CustomButton as Button } from '../../Components/UI/Button/CustomButton';
-import { capitalize } from '../../Utils/utilities';
+import { capitalize, generatePath } from '../../Utils/utilities';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 
 export const VanDetails = () => {
+  //getting searchParams from location obj to proper back navigation
+  const location = useLocation();
+  const searchParameter = location.state?.searchParam || '';
+
+  //getting id of specific Van
   const params = useParams();
   const [van, setVan] = useState();
+
   useEffect(() => {
     fetch(`/api/vans/${params.id}`)
       .then(resp => resp.json())
       .then(data => setVan(data.vans));
   }, [params.id]);
+
   return (
     <>
       {van ? (
         <div className={s.wrapper}>
           <CustomLink
-            to='..' // ".." point to parent path like in cd ../ command this made our path a relative to parent no matter name he have
             relative='path'
+            to={generatePath(searchParameter)}
             renderIcon={({ classes }) => <Icon iconClass={classes} />}
           >
-            Back to all vans
+            Back to {searchParameter || 'all'} vans
           </CustomLink>
           <img src={van.imageUrl} alt='Van' />
-          <Button type={van.type}>{capitalize(van.type)}</Button>
+          <Button
+            relative='path'
+            type={van.type}
+            to={generatePath(searchParameter)}
+          >
+            {capitalize(van.type)}
+          </Button>
           <div>
             <h2>{van.name}</h2>
             <p className={s.price}>
@@ -36,8 +49,8 @@ export const VanDetails = () => {
             </p>
             <p className={s.descr}>{van.description}</p>
           </div>
-          <Button type='home' to='#'>
-            Rent this van
+          <Button type='home' to={'.'}>
+            Rent this van (in progress)
           </Button>
         </div>
       ) : (

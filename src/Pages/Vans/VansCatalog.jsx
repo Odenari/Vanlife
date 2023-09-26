@@ -1,65 +1,53 @@
 import s from './VansCatalog.module.css';
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { VanCard } from '../../Components/VanCard/VanCard';
-import { superbClear, capitalize, filterByType } from '../../Utils/utilities';
+import { capitalize, requestVans, getUniqTypes } from '../../Utils/utilities';
 import { CustomLink } from '../../Components/UI/Link/CustomLink';
 import { CustomButton } from '../../Components/UI/Button/CustomButton';
 
-const feeCategories = [];
+//
+import { useLoaderData, useSearchParams } from 'react-router-dom';
 
-const getUniqTypes = data => [...new Set(data.map(o => o.type))];
+const feeCategories = ['simple', 'rugged', 'luxury'];
 
-export const VansCatalog = () => {
-  const [vans, setVans] = useState([]);
+export function loader() {
+  try {
+    return requestVans('/api/vans');
+  } catch (err) {
+    console.log(err);
+  }
+}
 
-  useEffect(() => {
-    fetch('/api/vans')
-      .then(res => res.json())
-      .then(data => {
-        setVans(data.vans);
-        if (!feeCategories.length) {
-          feeCategories.push(...getUniqTypes(data.vans));
-        }
-      });
-  }, []);
-
+const VansCatalog = () => {
+  const vans = useLoaderData();
   const [searchParams] = useSearchParams();
   const searchType = searchParams.get('type');
-  const filteredVans = filterByType(vans, searchType);
 
+  const displayedVans = searchType
+    ? vans.filter(van => van.type === searchType)
+    : vans;
   return (
     <section className='container'>
       <div className={s.catalogHeader}>
         <h2>Explore our van options</h2>
-        <div className={s.filtersWrapper}>
-          {feeCategories.length ? (
-            feeCategories.map((filter, index) => {
-              return (
-                <CustomButton
-                  key={index}
-                  type={filter}
-                  isActive={searchType}
-                  searchParams={searchParams}
-                >
-                  {capitalize(filter)}
-                </CustomButton>
-              );
-            })
-          ) : (
-            <h3>Loading..</h3>
-          )}
 
+        <div className={s.filtersWrapper}>
+          {feeCategories.map((filter, index) => (
+            <CustomButton key={index} type={filter} isActive={searchType}>
+              {capitalize(filter)}
+            </CustomButton>
+          ))}
           {searchType && <CustomLink to='.'>Clear filters</CustomLink>}
         </div>
+
         <div className={s.catalogBody}>
-          {vans && !filteredVans.length
-            ? vans.map(v => <VanCard key={v.id} van={v} />)
-            : filteredVans.length
-            ? filteredVans.map(v => <VanCard key={v.id} van={v} />)
-            : 'Going to the rabbit hole'}
+          {displayedVans &&
+            displayedVans.map(v => (
+              <VanCard van={v} key={v.id} state={{ searchParam: searchType }} />
+            ))}
         </div>
       </div>
     </section>
   );
 };
+export default VansCatalog;

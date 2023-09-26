@@ -5,7 +5,7 @@ export const HostVansItem = ({ van }) => {
   return (
     <>
       <li>
-        <Link className={s.listItem} to={`${van.id}`}>
+        <Link className={s.listItem} to={van.id}>
           <img src={van.imageUrl} alt='van' />
           <div>
             <h3>{van.name}</h3>

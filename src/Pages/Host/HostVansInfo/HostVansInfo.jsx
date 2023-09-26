@@ -34,7 +34,7 @@ function render(van, params) {
         relative='path'
         renderIcon={({ classes }) => <Icon iconClass={classes} />}
       >
-        Back to all vans
+        Back to hosted vans
       </CustomLink>
       <div>
         <header className={detailsHeader}>

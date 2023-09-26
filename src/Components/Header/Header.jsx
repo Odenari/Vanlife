@@ -1,13 +1,6 @@
-// --- Styles go first --- //
 import s from './Header.module.css';
 
-// --- Assets --- //
 import logo from '/src/Assets/Logo/logog.png';
-
-// --- Libs entities --- //
-import { Link } from 'react-router-dom';
-
-// --- Custom entities --- //
 import { CustomLink } from '../UI/Link/CustomLink';
 
 export const Header = () => {

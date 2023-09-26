@@ -1,0 +1,25 @@
+.errorWrapper {
+  height: 40vh;
+  margin: 0 auto;
+  display: flex;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.errorWrapper > a {
+  width: 100%;
+  display: grid;
+  height: 3.45rem;
+  text-align: center;
+  font-size: 1.225rem;
+  place-content: center;
+  letter-spacing: 0.05rem;
+  background: var(--rugged);
+  font-weight: var(--fw-700);
+  color: var(--txt-alter-clr);
+  border-radius: var(--small-border);
+  transition: background var(--short-trs) ease-in-out;
+}

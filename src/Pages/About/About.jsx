@@ -28,7 +28,7 @@ export const About = () => {
         <div className={s.callToAction}>
           <h3>Your destination is waiting. Your van is ready.</h3>
 
-          <CustomButton type='about' to='/vans'>
+          <CustomButton type='about' to='../vans'>
             Explore our vans
           </CustomButton>
         </div>

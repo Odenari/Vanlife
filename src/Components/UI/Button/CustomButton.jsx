@@ -13,9 +13,9 @@ const styles = {
 };
 
 export const CustomButton = props => {
-  const { to, type, isActive, children } = props;
+  const { to, type, isActive, children, state, relative } = props;
 
-  if (!type || !children) {
+  if (!children) {
     console.error('Arguments is missing...');
   }
 
@@ -23,8 +23,10 @@ export const CustomButton = props => {
 
   return (
     <Link
-      to={to || '?type=' + type}
+      state={state}
       style={activeStyles}
+      relative={relative}
+      to={to || `?type=${type}`}
       className={`${styles[type]} ${styles.default}`}
     >
       {children}

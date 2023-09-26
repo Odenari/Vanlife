@@ -1,5 +1,6 @@
-.main-container {
+#root {
   width: 34.375rem;
+  min-height: 100vh;
   margin: 0 auto;
   background-color: var(--main-bg-clr);
   text-align: start;

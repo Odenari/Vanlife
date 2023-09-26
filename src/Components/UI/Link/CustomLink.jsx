@@ -1,16 +1,12 @@
 import { link, activeLink } from './CustomLink.module.css';
 import { NavLink } from 'react-router-dom';
 
-const activeClass = active => {
-  if (active) return 'active';
-};
-
 export const CustomLink = ({
-  handler,
-  renderIcon,
-  END,
   to,
+  END,
+  handler,
   relative,
+  renderIcon,
   ...props
 }) => {
   const classes = ['left'];
@@ -20,7 +16,7 @@ export const CustomLink = ({
       onClick={handler}
       to={to ? to : null}
       relative={relative}
-      className={route => (route.isActive && activeLink) || link}
+      className={({ isActive }) => (isActive && activeLink) || link}
     >
       {renderIcon && renderIcon({ classes })}
       {props.children}

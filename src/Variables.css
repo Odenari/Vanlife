@@ -29,7 +29,9 @@
   /* Transitions */
   --short-trs: 200ms;
 
-  /* Margins & Paddings  & Gaps*/
+  /* Sizes & Margins & Paddings  & Gaps*/
+
+  --header-footer-height: 5rem;
   --base-gap: 1.75rem;
   --small-gap: 0.875rem;
   --base-m: 2.5rem;

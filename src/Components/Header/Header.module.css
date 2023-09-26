@@ -1,5 +1,8 @@
 .navContainer {
-  padding: 2.25em 1.565em;
+  display: flex;
+  justify-content: space-between;
+  height: var(--header-footer-height);
+  padding-inline: var(--base-inline-p);
 }
 
 .logoImg {
@@ -8,6 +11,7 @@
 }
 
 .listOfLinks {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
