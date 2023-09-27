@@ -4,23 +4,15 @@ import { Icon } from '../../Components/UI/Icons/Icon';
 import { CustomLink } from '../../Components/UI/Link/CustomLink';
 import { CustomButton as Button } from '../../Components/UI/Button/CustomButton';
 import { capitalize, generatePath } from '../../Utils/utilities';
-import { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useLocation, useLoaderData, useSearchParams } from 'react-router-dom';
 
 export const VanDetails = () => {
+  //getting data from loader
+  const van = useLoaderData();
+
   //getting searchParams from location obj to proper back navigation
   const location = useLocation();
   const searchParameter = location.state?.searchParam || '';
-
-  //getting id of specific Van
-  const params = useParams();
-  const [van, setVan] = useState();
-
-  useEffect(() => {
-    fetch(`/api/vans/${params.id}`)
-      .then(resp => resp.json())
-      .then(data => setVan(data.vans));
-  }, [params.id]);
 
   return (
     <>

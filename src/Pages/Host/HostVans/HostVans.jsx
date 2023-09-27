@@ -1,14 +1,8 @@
-import { useState, useEffect } from 'react';
 import { HostVansItem } from './HostVansItem/HostVansItem';
+import { useLoaderData } from 'react-router-dom';
 
 export const HostVans = () => {
-  const [hostVans, setHostVans] = useState(null);
-
-  useEffect(() => {
-    fetch('/api/host/vans/')
-      .then(resp => resp.json())
-      .then(data => setHostVans(data.vans));
-  }, []);
+  const hostVans = useLoaderData();
 
   return (
     <>

@@ -15,15 +15,13 @@
 }
 
 a[aria-current='page'] {
-  text-decoration: none;
+  background: transparent;
+}
+a[aria-current='page']:hover {
+  scale: 1.06;
   background: transparent;
 }
 
-a[aria-current='page']:hover {
-  transform: scale(1.025);
-  text-underline-offset: 0.2em;
-  text-decoration: underline 0.15em;
-}
 .catalogBody {
   display: grid;
   grid-template-columns: 1fr 1fr;

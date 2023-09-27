@@ -10,15 +10,7 @@ import { useLoaderData, useSearchParams } from 'react-router-dom';
 
 const feeCategories = ['simple', 'rugged', 'luxury'];
 
-export function loader() {
-  try {
-    return requestVans('/api/vans');
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-const VansCatalog = () => {
+export const VansCatalog = () => {
   const vans = useLoaderData();
   const [searchParams] = useSearchParams();
   const searchType = searchParams.get('type');
@@ -26,6 +18,7 @@ const VansCatalog = () => {
   const displayedVans = searchType
     ? vans.filter(van => van.type === searchType)
     : vans;
+
   return (
     <section className='container'>
       <div className={s.catalogHeader}>
@@ -50,4 +43,3 @@ const VansCatalog = () => {
     </section>
   );
 };
-export default VansCatalog;

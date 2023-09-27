@@ -9,23 +9,15 @@ import { SmallButton } from '../../../Components/UI/Button/SmallButton/SmallButt
 import { CustomLink } from '../../../Components/UI/Link/CustomLink';
 import { capitalize } from '../../../Utils/utilities';
 
-import { Outlet, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Outlet, useLoaderData } from 'react-router-dom';
 
 export const HostVansInfo = () => {
-  const [van, setVan] = useState(null);
-  const params = useParams();
+  const van = useLoaderData();
 
-  useEffect(() => {
-    fetch(`/api/vans/${params.id}`)
-      .then(resp => resp.json())
-      .then(data => setVan(data.vans));
-  }, [params.id]);
-
-  return <>{van ? render(van, params) : <h2>Loading...</h2>}</>;
+  return <>{van && render(van)}</>;
 };
 
-function render(van, params) {
+function render(van) {
   return (
     <section className={wrapper}>
       <CustomLink
@@ -50,15 +42,13 @@ function render(van, params) {
         </header>
       </div>
       <div className={tabs}>
-        <CustomLink END to={`/host/vans/${params.id}`}>
+        <CustomLink END to={'.'}>
           Details
         </CustomLink>
         <CustomLink to='pricing'>Pricing</CustomLink>
         <CustomLink to='photos'>Photos</CustomLink>
       </div>
-      <section>
-        <Outlet context={{ currentVan: van }} />
-      </section>
+      <Outlet context={{ currentVan: van }} />
     </section>
   );
 }

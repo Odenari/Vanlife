@@ -1,4 +1,24 @@
-export async function requestVans(path) {
+import { redirect } from 'react-router-dom';
+
+//? Async function cuz we need return Promise in loader() that allows us to check for if user are logged simultaneously in every component also token isLogged is hardcoded value so just pretend it comes from database or server
+
+export async function requireAuth() {
+  const message = '?message=Sorry you need to be logged in.';
+  const isLogged = false;
+  if (!isLogged) {
+    //* It's silly, but it works. This hack exist cause we are using MirageJS
+    //* And with v6.4.5 of Router redirect is require body now
+    const response = redirect(`/login${message}`);
+    response.body = true;
+    return response;
+  }
+  return null;
+}
+
+export async function requestVans(path, id) {
+  if (id) {
+    path += id;
+  }
   const res = await fetch(path);
   if (res.ok) {
     const data = await res.json();
@@ -6,30 +26,14 @@ export async function requestVans(path) {
   }
   if (!res.ok) {
     return Promise.reject({
-      message: 'Error occurred =/',
+      message: 'Failed to fetch vans.',
       status: res.status,
       statusText: res.statusText,
     });
   }
 }
-export async function setVansAndTypes(data, setter, uniqTypes) {
-  setter(data.vans);
-  !uniqTypes.length && uniqTypes.push(...getUniqTypes(data.vans));
-}
 
-export async function getVansTestErrors() {
-  const res = await fetch('/api/vans');
-  if (res.status === 500) {
-    throw {
-      message: 'Failed to fetch vans',
-      statusText: res.statusText,
-      status: res.status,
-    };
-  }
-  const data = await res.json();
-  return data.vans;
-}
-
+//* --- NON FETCHING UTILS ---
 export const getUniqTypes = data => [...new Set(data.map(o => o.type))];
 export const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 

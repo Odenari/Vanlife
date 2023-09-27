@@ -79,8 +79,12 @@ createServer({
     this.logging = false;
 
     this.get('/vans', (schema, request) => {
-      // return Response(500, {}, { error: 'Error fetching data' });
-      return schema.vans.all();
+      const chance = Math.random() * 10;
+      if (chance > 1) {
+        return schema.vans.all();
+      } else {
+        return Response(500, {}, { error: 'Error fetching data' });
+      }
     });
 
     this.get('/vans/:id', (schema, request) => {

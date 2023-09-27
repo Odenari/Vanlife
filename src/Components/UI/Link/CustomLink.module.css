@@ -9,7 +9,7 @@
 
 .link:hover {
   color: var(--rugged);
-  transform: scale(1.025);
+  transform: scale(1.225);
   text-decoration-color: var(--rugged);
 }
 .activeLink {
@@ -20,5 +20,5 @@
   transition: all 200ms ease-in-out;
 }
 .activeLink:hover {
-  transform: scale(1.025);
+  /* transform: scale(1.225); */
 }
