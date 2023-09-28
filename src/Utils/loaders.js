@@ -34,9 +34,10 @@ export async function loadHostVans() {
 
 export async function loadOneHostVan({ params }) {
   try {
-    const [data] = await requestVans(GET_HOST_VANS, params.id);
+    const data = await requestVans(GET_HOST_VANS, params.id);
     return data;
   } catch (err) {
     console.log(err);
   }
+  // return null;
 }

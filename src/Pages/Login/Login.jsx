@@ -1,38 +1,17 @@
-import { useState, Form } from 'react';
 import s from './Login.module.css';
-import { Link, useLoaderData } from 'react-router-dom';
-import { loginUser, submitLogin } from '../../Utils/utilities';
+import {
+  Link,
+  Form,
+  useLoaderData,
+  useActionData,
+  useNavigation,
+} from 'react-router-dom';
 
 export const Login = () => {
   // testing version
-  const [error, setError] = useState(null);
-  const [formStatus, setFormStatus] = useState('idle');
-
-  //essential hooks
+  const nav = useNavigation();
+  const error = useActionData();
   const loaderResponse = useLoaderData();
-  const [loginFormData, setLoginFormData] = useState({
-    email: '',
-    password: '',
-  });
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    setFormStatus('submitting');
-    setError(null);
-    loginUser(loginFormData)
-      .then(data => {
-        console.log(data);
-        // users.loggedInUsers(data);
-        // console.log(users);
-      })
-      .catch(e => setError(e))
-      .finally(() => setFormStatus('idle'));
-  }
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setLoginFormData(prev => ({ ...prev, [name]: value }));
-  }
-
   return (
     <div className={s.formContainer}>
       <h2>Sign in into your account</h2>
@@ -43,29 +22,16 @@ export const Login = () => {
             color: 'red',
           }}
         >
-          <h6>{error.message}</h6>
-          <p>
-            {error.statusText}, code: {error.status}
-          </p>
+          <h6>{error}</h6>
         </div>
       )}
-      <form onSubmit={handleSubmit} className={s.form}>
-        <input
-          name='email'
-          type='email'
-          onChange={handleChange}
-          placeholder='Enter email'
-        />
-        <input
-          name='password'
-          type='password'
-          onChange={handleChange}
-          placeholder='Enter password'
-        />
-        <button disabled={formStatus === 'submitting' || null}>
-          {formStatus === 'submitting' ? 'Logging in...' : 'Log in'}
+      <Form replace method='post' className={s.form}>
+        <input name='email' type='email' placeholder='Enter email' />
+        <input name='password' type='password' placeholder='Enter password' />
+        <button disabled={nav.state === 'submitting' || null}>
+          {nav.state === 'submitting' ? 'Logging in...' : 'Log in'}
         </button>
-      </form>
+      </Form>
       <Link to='.'>
         Don’t have an account? <span className={s.create}>Create one now</span>
       </Link>

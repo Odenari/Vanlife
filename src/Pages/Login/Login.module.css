@@ -16,6 +16,10 @@
   flex-direction: column;
   max-width: 500px;
 }
+.form > button:disabled {
+  background-color: #aaaaaa;
+  cursor: not-allowed;
+}
 
 .form > input {
   height: 40px;

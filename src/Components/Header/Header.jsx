@@ -2,8 +2,12 @@ import s from './Header.module.css';
 import userIcon from '../../Assets/Icons/Icon.svg';
 import logo from '/src/Assets/Logo/logog.png';
 import { CustomLink } from '../UI/Link/CustomLink';
-
+import { redirect } from 'react-router-dom';
 export const Header = () => {
+  const fakeLogOut = () => {
+    localStorage.removeItem('isLogged');
+  };
+
   return (
     <header>
       <nav className={s.navContainer}>
@@ -20,6 +24,7 @@ export const Header = () => {
             <CustomLink to='login'>
               <img src={userIcon} />
             </CustomLink>
+            <button onClick={fakeLogOut}>Log out</button>
           </li>
         </ul>
       </nav>

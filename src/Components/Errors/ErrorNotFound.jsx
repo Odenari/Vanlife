@@ -18,19 +18,28 @@ export function Error() {
   return (
     <section
       style={{
-        margin: '0 auto',
+        margin: '2rem auto',
         width: '70%',
       }}
     >
       <h3>Suddenly, a convolute error happens.</h3>
-      <div>
+      <div
+        style={{
+          marginTop: '1.725rem',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          gap: '0.82rem',
+        }}
+      >
         <p>
-          <b>Status</b>: {error.status}
+          <b>Status</b>: {error.status || 'Status unknown..'}
         </p>
         <p>
-          <strong>Type</strong>: {error.statusText}
+          <strong>Type</strong>: {error.statusText || 'Status unknown..'}
         </p>
         <p>
+          {console.log(error.message)}
           <strong>Explanation</strong>: {error.message}
         </p>
         <p>Please try to refresh the page</p>

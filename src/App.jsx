@@ -28,16 +28,14 @@ import {
   loadHostVans,
   loadOneHostVan,
   loadLogin,
-  submitLogin,
 } from './Utils/loaders';
-import { requireAuth } from './Utils/utilities.js';
+import { requireAuth, actionSubmitLogin } from './Utils/utilities.js';
 import {
   Route,
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import { useContext } from 'react';
 
 // --- MOCK SERVER --- //
 import '../server.js';
@@ -80,7 +78,7 @@ const router = createBrowserRouter(
         path='/login'
         element={<Login />}
         loader={loadLogin}
-        action={submitLogin}
+        action={actionSubmitLogin}
       />
       <Route path='*' element={<ErrorNotFound />} />
     </Route>

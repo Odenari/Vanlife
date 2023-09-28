@@ -1,9 +1,28 @@
 import { redirect } from 'react-router-dom';
 
-//action fn for the FORM!
-export function submitLogin({ request, params }) {
-  console.log(params);
-  return null;
+//action fn for the FORM
+export async function actionSubmitLogin({ request }) {
+  //* formData helps to grab body of post request from fetch()
+  const formData = await request.formData();
+
+  //* now we can extract input fields by input name and do what we want with them
+  const email = formData.get('email');
+  const password = formData.get('password');
+
+  //* try to log in
+  try {
+    const data = await loginUser({ email, password });
+    if (data.token) {
+      localStorage.setItem('isLogged', true);
+      const res = redirect('/host');
+      //hack
+      res.body = true;
+      return res;
+    }
+    if (!data.token) throw { message: 'Please provide correct credentials' };
+  } catch (er) {
+    return er.message;
+  }
 }
 
 //* Async post function for checking data on server and grab token ig it is true
@@ -14,32 +33,31 @@ export async function loginUser(credentials) {
   });
   const data = await res.json();
   if (!res.ok) {
+    localStorage.removeItem('isLogged');
     throw {
       message: data.message,
       statusText: res.statusText,
       status: res.status,
     };
   }
+
   return data;
 }
 
-//? Async function cuz we need return Promise in loader() that allows us to check for if user are logged simultaneously in every component also token isLogged is hardcoded value so just pretend it comes from database or server
+//? Async function cuz we need return Promise in loader() that allows us to check up if user are logged simultaneously in every component also token isLogged comes from local storage so lets just pretend it comes from server
 
-export async function requireAuth(token) {
-  let isLogged = false;
-  if (token) {
-    isLogged = !isLogged;
-  }
-  const message = '?message=Sorry you need to be logged in.';
-
+export async function requireAuth() {
+  let isLogged = localStorage.getItem('isLogged');
   if (!isLogged) {
+    const message = '?message=Sorry you need to be logged in.';
     //* It's silly, but it works. This hack exist cause we are using MirageJS
     //* And with v6.4.5 of Router redirect is require body now
     const response = redirect(`/login${message}`);
     response.body = true;
     return response;
+  } else {
+    return isLogged;
   }
-  return null;
 }
 
 // export function loadHostPage()
