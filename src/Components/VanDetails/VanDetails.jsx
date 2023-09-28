@@ -4,7 +4,7 @@ import { Icon } from '../../Components/UI/Icons/Icon';
 import { CustomLink } from '../../Components/UI/Link/CustomLink';
 import { CustomButton as Button } from '../../Components/UI/Button/CustomButton';
 import { capitalize, generatePath } from '../../Utils/utilities';
-import { useLocation, useLoaderData, useSearchParams } from 'react-router-dom';
+import { useLocation, useLoaderData } from 'react-router-dom';
 
 export const VanDetails = () => {
   //getting data from loader

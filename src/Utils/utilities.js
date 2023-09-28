@@ -1,10 +1,37 @@
 import { redirect } from 'react-router-dom';
 
+//action fn for the FORM!
+export function submitLogin({ request, params }) {
+  console.log(params);
+  return null;
+}
+
+//* Async post function for checking data on server and grab token ig it is true
+export async function loginUser(credentials) {
+  const res = await fetch('/api/login', {
+    method: 'post',
+    body: JSON.stringify(credentials),
+  });
+  const data = await res.json();
+  if (!res.ok) {
+    throw {
+      message: data.message,
+      statusText: res.statusText,
+      status: res.status,
+    };
+  }
+  return data;
+}
+
 //? Async function cuz we need return Promise in loader() that allows us to check for if user are logged simultaneously in every component also token isLogged is hardcoded value so just pretend it comes from database or server
 
-export async function requireAuth() {
+export async function requireAuth(token) {
+  let isLogged = false;
+  if (token) {
+    isLogged = !isLogged;
+  }
   const message = '?message=Sorry you need to be logged in.';
-  const isLogged = false;
+
   if (!isLogged) {
     //* It's silly, but it works. This hack exist cause we are using MirageJS
     //* And with v6.4.5 of Router redirect is require body now
@@ -14,6 +41,8 @@ export async function requireAuth() {
   }
   return null;
 }
+
+// export function loadHostPage()
 
 export async function requestVans(path, id) {
   if (id) {
