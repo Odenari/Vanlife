@@ -1,42 +1,43 @@
-import { requestVans } from './utilities';
 import { defer } from 'react-router-dom';
+import { getVans, getVan, getHostedVans } from '../../firebase.key';
+import { requireAuth } from './utilities';
 
 const GET_ALL_VANS = '/api/vans/';
 const GET_HOST_VANS = '/api/host/vans/';
 
 export async function loadAllVans() {
   try {
-    return defer({ vans: requestVans(GET_ALL_VANS) });
+    return defer({ vans: getVans() });
   } catch (err) {
-    console.log(err);
+    return err;
   }
 }
 
 export function loadOneVan({ params }) {
   try {
-    return requestVans(GET_ALL_VANS, params.id);
+    return getVan(params.id);
   } catch (err) {
-    console.log(err);
+    return err;
+  }
+}
+
+export async function loadHostVans({ request }) {
+  try {
+    return defer({ vans: getHostedVans(request) });
+  } catch (err) {
+    return err;
+  }
+}
+
+export async function loadOneHostVan({ request, params }) {
+  requireAuth(request);
+  try {
+    const data = await getVan(params.id);
+    return data;
+  } catch (err) {
+    return err;
   }
 }
 export async function loadLogin({ request }) {
   return new URL(request.url).searchParams.get('message');
-}
-
-export async function loadHostVans() {
-  try {
-    return defer({ vans: requestVans(GET_HOST_VANS) });
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-export async function loadOneHostVan({ params }) {
-  try {
-    const data = await requestVans(GET_HOST_VANS, params.id);
-    return data;
-  } catch (err) {
-    console.log(err);
-  }
-  // return null;
 }

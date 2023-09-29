@@ -61,9 +61,17 @@ const router = createBrowserRouter(
         errorElement={<Error />}
       >
         <Route loader={loadHostVans} index element={<Dashboard />} />
-        <Route path='income' element={<Income />} />
+        <Route
+          path='income'
+          loader={({ request }) => requireAuth(request)}
+          element={<Income />}
+        />
         <Route path='vans' element={<HostVans />} loader={loadHostVans} />
-        <Route path='reviews' element={<Reviews />} />
+        <Route
+          path='reviews'
+          loader={({ request }) => requireAuth(request)}
+          element={<Reviews />}
+        />
         <Route
           path='vans/:id/'
           element={<HostVansInfo />}

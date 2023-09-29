@@ -64,6 +64,7 @@ export async function requireAuth(request) {
   }
 }
 
+//old version w/o database
 export async function requestVans(path, id) {
   if (id) {
     path += id;

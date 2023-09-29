@@ -85,7 +85,7 @@ createServer({
   routes() {
     this.namespace = 'api';
     this.logging = false;
-
+    this.passthrough('https://firebase.google.com/**');
     //delay variable
     // this.timing = 1000;
 

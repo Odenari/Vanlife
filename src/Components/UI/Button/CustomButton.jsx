@@ -23,7 +23,6 @@ export const CustomButton = props => {
 
   return (
     <Link
-      state={state}
       style={activeStyles}
       relative={relative}
       to={to || `?type=${type}`}

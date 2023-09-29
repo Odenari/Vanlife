@@ -3,13 +3,13 @@ import { CustomButton } from '../UI/Button/CustomButton';
 import { capitalize } from '../../Utils/utilities';
 import { Link } from 'react-router-dom';
 
-export const VanCard = ({ van, state }) => {
+export const VanCard = ({ van }) => {
   const { imageUrl, name, price, type: vanSegment } = van;
   const btnName = capitalize(vanSegment);
 
   return (
     <div className={s.vanWrapper}>
-      <Link state={state} to={van.id}>
+      <Link to={van.id}>
         <img src={imageUrl} alt={`Van model  ${name}`} />
       </Link>
       <div className={s.vanInfo}>
@@ -19,7 +19,7 @@ export const VanCard = ({ van, state }) => {
           <span>/day</span>
         </p>
       </div>
-      <CustomButton state={state} to={van.id} type={vanSegment}>
+      <CustomButton to={van.id} type={vanSegment}>
         {btnName}
       </CustomButton>
     </div>
