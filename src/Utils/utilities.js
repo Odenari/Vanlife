@@ -8,13 +8,14 @@ export async function actionSubmitLogin({ request }) {
   //* now we can extract input fields by input name and do what we want with them
   const email = formData.get('email');
   const password = formData.get('password');
+  const path = new URL(request.url).searchParams.get('redirectBack') || '/host';
 
   //* try to log in
   try {
     const data = await loginUser({ email, password });
     if (data.token) {
       localStorage.setItem('isLogged', true);
-      const res = redirect('/host');
+      const res = redirect(path);
       //hack
       res.body = true;
       return res;
@@ -46,21 +47,22 @@ export async function loginUser(credentials) {
 
 //? Async function cuz we need return Promise in loader() that allows us to check up if user are logged simultaneously in every component also token isLogged comes from local storage so lets just pretend it comes from server
 
-export async function requireAuth() {
+export async function requireAuth(request) {
   let isLogged = localStorage.getItem('isLogged');
   if (!isLogged) {
+    const path = new URL(request.url).pathname;
+    0;
     const message = '?message=Sorry you need to be logged in.';
-    //* It's silly, but it works. This hack exist cause we are using MirageJS
-    //* And with v6.4.5 of Router redirect is require body now
-    const response = redirect(`/login${message}`);
+
+    // And with v6.4.5 of Router redirect is require body now
+    // It's silly, but it works. This hack exist cause we are using MirageJS
+    const response = redirect(`/login${message}&redirectBack=${path}`);
     response.body = true;
     return response;
   } else {
     return isLogged;
   }
 }
-
-// export function loadHostPage()
 
 export async function requestVans(path, id) {
   if (id) {
@@ -81,6 +83,12 @@ export async function requestVans(path, id) {
 }
 
 //* --- NON FETCHING UTILS ---
+export const sleep = ms =>
+  new Promise(r => {
+    console.log('Start', ms);
+    setTimeout(r, ms);
+  });
+
 export const getUniqTypes = data => [...new Set(data.map(o => o.type))];
 export const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 

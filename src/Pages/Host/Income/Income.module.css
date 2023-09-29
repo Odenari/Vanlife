@@ -1,0 +1,48 @@
+.info {
+  padding-block: 2.5rem;
+  margin-block: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items: center; */
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1rem;
+}
+.header h2:last-child {
+  font-weight: var(--fw-800);
+  font-size: 48px;
+}
+
+.header > div p {
+  color: #4d4d4d;
+}
+.feeItem {
+  display: flex;
+  height: 6.375rem;
+  padding: 0.65rem;
+  margin-block: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  border-radius: var(--small-border);
+  background-color: var(--txt-alter-clr);
+}
+.feeItem :first-child {
+  font-size: 2.2rem;
+  font-weight: var(--fw-600);
+}
+.days {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.feeContainer > h3 {
+  margin-block: 1.5rem;
+}

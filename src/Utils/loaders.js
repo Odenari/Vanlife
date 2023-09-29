@@ -1,11 +1,12 @@
-import { requestVans, requireAuth } from './utilities';
+import { requestVans } from './utilities';
+import { defer } from 'react-router-dom';
 
 const GET_ALL_VANS = '/api/vans/';
 const GET_HOST_VANS = '/api/host/vans/';
 
-export function loadAllVans() {
+export async function loadAllVans() {
   try {
-    return requestVans(GET_ALL_VANS);
+    return defer({ vans: requestVans(GET_ALL_VANS) });
   } catch (err) {
     console.log(err);
   }
@@ -23,10 +24,8 @@ export async function loadLogin({ request }) {
 }
 
 export async function loadHostVans() {
-  // await requireAuth();
-
   try {
-    return requestVans(GET_HOST_VANS);
+    return defer({ vans: requestVans(GET_HOST_VANS) });
   } catch (err) {
     console.log(err);
   }

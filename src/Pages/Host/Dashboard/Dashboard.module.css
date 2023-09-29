@@ -1,0 +1,54 @@
+.info {
+  margin-top: 0;
+  padding-block: 2.5rem;
+  background-color: var(--primary-bg-clr);
+  margin-bottom: 0;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.header > div p {
+  color: #4d4d4d;
+}
+.income {
+  font-weight: var(--fw-800);
+  font-size: calc(var(--fs-h2) * 1.2);
+}
+.days {
+  text-decoration: underline;
+  font-weight: bold;
+}
+.subHeader {
+  margin: 0;
+  padding-block: 2.2rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--one-more-clr);
+}
+.subHeader > div {
+  display: flex;
+  align-items: center;
+}
+.reviewStat {
+  margin-inline: var(--small-gap);
+}
+
+.reviewStat span {
+  margin-left: 0.265rem;
+}
+
+.starIcon {
+  position: relative;
+  color: var(--btn-main);
+  top: 1px;
+  color: var(--btn-main);
+}

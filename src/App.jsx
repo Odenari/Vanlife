@@ -40,7 +40,7 @@ import {
 // --- MOCK SERVER --- //
 import '../server.js';
 
-// --- creating router which support a data layer API (lazy,loader. action etc.) --- //
+// --- creating router which support a data layer API (loader, action) --- //
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
@@ -57,10 +57,10 @@ const router = createBrowserRouter(
       <Route
         path='host'
         element={<Host />}
-        loader={async () => requireAuth()}
+        loader={async ({ request }) => requireAuth(request)}
         errorElement={<Error />}
       >
-        <Route index element={<Dashboard />} />
+        <Route loader={loadHostVans} index element={<Dashboard />} />
         <Route path='income' element={<Income />} />
         <Route path='vans' element={<HostVans />} loader={loadHostVans} />
         <Route path='reviews' element={<Reviews />} />

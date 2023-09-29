@@ -36,10 +36,9 @@ export function Error() {
           <b>Status</b>: {error.status || 'Status unknown..'}
         </p>
         <p>
-          <strong>Type</strong>: {error.statusText || 'Status unknown..'}
+          <strong>Type</strong>: {error.statusText || 'Type unknown..'}
         </p>
         <p>
-          {console.log(error.message)}
           <strong>Explanation</strong>: {error.message}
         </p>
         <p>Please try to refresh the page</p>

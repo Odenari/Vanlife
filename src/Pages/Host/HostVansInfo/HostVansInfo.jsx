@@ -9,24 +9,31 @@ import { SmallButton } from '../../../Components/UI/Button/SmallButton/SmallButt
 import { CustomLink } from '../../../Components/UI/Link/CustomLink';
 import { capitalize } from '../../../Utils/utilities';
 
-import { Outlet, useLoaderData } from 'react-router-dom';
+import {
+  Outlet,
+  redirect,
+  useLoaderData,
+  useSearchParams,
+} from 'react-router-dom';
 
 export const HostVansInfo = () => {
   const van = useLoaderData();
-
-  return <>{van && render(van)}</>;
+  const [param, setParam] = useSearchParams();
+  const redirectPath = param.get('redirectTo');
+  return <>{van && render(van, redirectPath)}</>;
 };
 
-function render(van) {
+function render(van, redirect) {
+  const backLink = (redirect && 'dashboard') || 'hosted vans';
   return (
     <section className={wrapper}>
       <CustomLink
         END
-        to='..'
+        to={redirect || '..'}
         relative='path'
         renderIcon={({ classes }) => <Icon iconClass={classes} />}
       >
-        Back to hosted vans
+        Back to {backLink}
       </CustomLink>
       <div>
         <header className={detailsHeader}>
