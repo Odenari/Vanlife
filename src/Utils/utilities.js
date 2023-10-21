@@ -51,7 +51,6 @@ export async function requireAuth(request) {
   let isLogged = localStorage.getItem('isLogged');
   if (!isLogged) {
     const path = new URL(request.url).pathname;
-    0;
     const message = '?message=Sorry you need to be logged in.';
 
     // And with v6.4.5 of Router redirect is require body now

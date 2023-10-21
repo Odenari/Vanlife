@@ -2,7 +2,7 @@ import s from './Header.module.css';
 import userIcon from '../../Assets/Icons/Icon.svg';
 import logo from '/src/Assets/Logo/logog.png';
 import { CustomLink } from '../UI/Link/CustomLink';
-import { redirect } from 'react-router-dom';
+
 export const Header = () => {
   const fakeLogOut = () => {
     localStorage.removeItem('isLogged');

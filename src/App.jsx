@@ -54,6 +54,7 @@ const router = createBrowserRouter(
       />
       <Route path='vans/:id' element={<VanDetails />} loader={loadOneVan} />
 
+      {/* Protected routes for host or admin */}
       <Route
         path='host'
         element={<Host />}
@@ -82,6 +83,7 @@ const router = createBrowserRouter(
           <Route path='Photos' element={<VanPhotos />} />
         </Route>
       </Route>
+
       <Route
         path='/login'
         element={<Login />}
